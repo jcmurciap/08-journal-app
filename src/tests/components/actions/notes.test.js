@@ -1,6 +1,9 @@
+/**
+ * @jest-environment node
+*/
 import configureStore from 'redux-mock-store'; //ES6 modules
 import thunk from 'redux-thunk'; 
-import { deleteNote, startLoadingNotes, startNewNote } from '../../../components/actions/notes';
+import { deleteNote, startLoadingNotes, startNewNote, startSaveNote } from '../../../components/actions/notes';
 import { types } from '../../../components/types/types';
 import {doc, deleteDoc} from 'firebase/firestore'
 import { db } from '../../../firebase/firebase-config';
@@ -21,10 +24,10 @@ let store = mockStore({initState});
 
 describe( '<notes /> tests', () => {
 
-    // purga el store despues de cada ejecucion de test
+    // reinicializacion del store
     beforeEach( () => {
         store = mockStore( initState )
-    })
+    });
     
     // install redux-mock-store
     test( 'Create a new note startNewNote', async() => {
@@ -70,29 +73,26 @@ describe( '<notes /> tests', () => {
             type: types.notesLoad,
             payload: expect.any(Array)
         })
+
+        // el objeto tiene lo que esperamos?
+        const expected = {
+            id: expect.any(String),
+            body: expect.any(String),
+            date: expect.any(Number),
+            title: expect.any(String),
+        } 
+        expect(actions[0].payload[0]).toMatchObject(expected);
+    });
+
+    test( 'startSaveNote update the note', async() => {
+
+        const note = {
+            id: 'aRUx2fWsAQS6FEkMQxbF',
+            title: 'title',
+            body: 'body'
+        };        
+        await store.dispatch(startSaveNote(note));
+        const actions = store.getActions()
+        expect(actions[0].type).toBe(types.notesUpdated);
     })
-
-
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
