@@ -96,3 +96,4 @@ describe( '<notes /> tests', () => {
         expect(actions[0].type).toBe(types.notesUpdated);
     })
 });
+    
