@@ -10,6 +10,7 @@ import { noteLogout } from './notes';
 import { types } from '../types/types';
 
 export const startLoginEmailPassword = ( email, password ) => {
+
     
     return ( dispatch ) => {
         // gateway to the Firebase authentication API
@@ -19,8 +20,8 @@ export const startLoginEmailPassword = ( email, password ) => {
         
         return signInWithEmailAndPassword( auth, email, password )
             .then(({ user }) => {
+                dispatch( login( user.uid, user.displayName ) );
                 dispatch( finishLoading() );
-                dispatch( login( 123, 'user123' ) );
             })   
             .catch( e => {
                 dispatch( finishLoading() );
