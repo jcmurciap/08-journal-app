@@ -10,6 +10,14 @@ import React from 'react';
 import {mount} from 'enzyme';
 import {Provider} from 'react-redux';
 import {LoginScreen} from "../../../components/auth/LoginScreen"
+import { startGoogleLogin } from '../../../components/actions/auth';
+
+jest.mock('../../../components/actions/auth', () => ({
+    // simulate function
+    startGoogleLogin: jest.fn(),    
+}))
+
+
 
 const middlewares = [thunk];
 
@@ -27,6 +35,10 @@ const initState = {
 
 let store = mockStore(initState);
 
+// mock the store
+store.dispatch = jest.fn(); 
+
+
 // mount: simulate a component going through an unmount/mount lifecycle.
 const wrapper = mount(
     <Provider store={store}>
@@ -41,6 +53,9 @@ describe( '<LoginScreen /> tests', () => {
     // reinicializacion del store para cada ejecución de una prueba
     beforeEach( () => {
         store = mockStore( initState );
+
+        // good practice => restablish default values
+        jest.clearAllMocks()
     });
 
     test('Return skeleton', () => {
@@ -48,4 +63,15 @@ describe( '<LoginScreen /> tests', () => {
         expect(wrapper).toMatchSnapshot();
 
     });
+
+    test('should dispatch startGoogleLogin action effectively', () => {
+
+        // simulate click on 'div' => 'google-btn'
+        // call function
+        wrapper.find('.google-btn').prop('onClick')();
+        expect(startGoogleLogin).toHaveBeenCalled();
+    })
+
+
+
 })
