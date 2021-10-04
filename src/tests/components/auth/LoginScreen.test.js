@@ -10,11 +10,12 @@ import React from 'react';
 import {mount} from 'enzyme';
 import {Provider} from 'react-redux';
 import {LoginScreen} from "../../../components/auth/LoginScreen"
-import { startGoogleLogin } from '../../../components/actions/auth';
+import { startGoogleLogin, startLoginEmailPassword } from '../../../components/actions/auth';
 
 jest.mock('../../../components/actions/auth', () => ({
     // simulate function
-    startGoogleLogin: jest.fn(),    
+    startGoogleLogin: jest.fn(),
+    startLoginEmailPassword: jest.fn(),    
 }))
 
 
@@ -72,6 +73,21 @@ describe( '<LoginScreen /> tests', () => {
         expect(startGoogleLogin).toHaveBeenCalled();
     })
 
+    test( 'startLoginEmailPassword should be execute with parameters correctly', () => {
+
+        const user = {
+            email: 'camilo@gmail.com',
+            password: '123',
+        }
+
+        wrapper.find('form').prop('onSubmit')({
+            preventDefault(){} // why?
+        });
+        expect(startLoginEmailPassword).toHaveBeenCalledWith(user.email, user.password);
+    });
 
 
 })
+
+
+
