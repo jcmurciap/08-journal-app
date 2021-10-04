@@ -17,7 +17,7 @@ export const startLoginEmailPassword = ( email, password ) => {
         
         dispatch( startLoading() );
         
-        signInWithEmailAndPassword( auth, email, password )
+        return signInWithEmailAndPassword( auth, email, password )
             .then(({ user }) => {
                 dispatch( finishLoading() );
                 dispatch( login( 123, 'user123' ) );
@@ -26,7 +26,7 @@ export const startLoginEmailPassword = ( email, password ) => {
                 dispatch( finishLoading() );
                 Swal.fire( 'Error', e.message, 'error' );
             });
-    };
+    }; 
 }
 
 // save data in firebase
