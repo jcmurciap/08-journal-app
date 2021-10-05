@@ -16,7 +16,7 @@ const initialState = {
     auth: {},
     ui: {
         loading: false,
-        magError: null,
+        msgError: null,
     },
     notes: {
         notes: [],
@@ -104,27 +104,5 @@ describe('<RegisterScreen /> tests', () => {
         
         expect(wrapper.find('.auth__alert-error').exists()).toBe(true);
         expect(wrapper.find('.auth__alert-error').text().trim()).toBe(initialState.ui.msgError);
-
-
-
     })
-
-
-
-
-
-
-
-
 })
-
-
-
-
-
-
-
-
-
-
-
