@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotesScreen /> tests show skeleton correctly 1`] = `
+<div
+  className="notes__main-content"
+>
+  <div
+    className="notes__appbar"
+  >
+    <span>
+      21 septiembre 2021
+    </span>
+    <input
+      id="fileSelector"
+      name="file"
+      onChange={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      type="file"
+    />
+    <div>
+      <button
+        className="btn"
+        onClick={[Function]}
+      >
+        Picture
+      </button>
+      <button
+        className="btn"
+        onClick={[Function]}
+      >
+        Save
+      </button>
+    </div>
+  </div>
+  <div
+    className="notes__content"
+  >
+    <input
+      className="notes__title-input"
+      name="title"
+      onChange={[Function]}
+      placeholder="Some awesome title"
+      type="text"
+      value="hello"
+    />
+    <textarea
+      className="notes__textarea"
+      name="body"
+      onChange={[Function]}
+      placeholder="What hapenned today"
+      value="world"
+    />
+  </div>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+  >
+    Delete
+  </button>
+</div>
+`;
