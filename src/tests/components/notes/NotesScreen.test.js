@@ -56,7 +56,26 @@ describe( '<NotesScreen /> tests', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+    test('Should to dispatch activeNote action component', () => {
 
-
-
+        // modifica la caja de texto
+        wrapper.find('input[name="title"]').simulate('change', {
+            // evento
+            target: {
+                name: 'title',
+                value: 'hello again',
+            } 
+        });
+        
+        // activeNote fue llamado 2 veces,por el useEffect(al inicio y al actualizar)
+        expect( activeNote ).toHaveBeenLastCalledWith(
+            1234,
+            {
+                body: 'world',
+                title: 'hello again',
+                id:1234,
+                date: 0
+            }
+        )
+    });
 });
