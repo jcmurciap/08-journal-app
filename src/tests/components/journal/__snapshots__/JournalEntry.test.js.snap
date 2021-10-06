@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<JournalEntry /> tests Should to show skeleton correctly 1`] = `
+<div
+  className="journal__entry pointer animate__animated animate__fadeIn animate__faster"
+  onClick={[Function]}
+>
+  <div
+    className="journal__entry-body"
+  >
+    <p
+      className="journal__entry-title"
+    >
+      hello
+    </p>
+    <p
+      className="journal__entry-content"
+    >
+      world
+    </p>
+  </div>
+  <div
+    className="journal__entry-date-box"
+  >
+    <span>
+      Wednesday
+    </span>
+    <h4>
+      31st
+    </h4>
+  </div>
+</div>
+`;
