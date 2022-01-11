@@ -9,6 +9,7 @@ import {
 import { login } from '../components/actions/auth';
 import { startLoadingNotes } from '../components/actions/notes';
 import { LoginScreen } from '../components/auth/LoginScreen';
+import { RegisterScreen } from '../components/auth/RegisterScreen';
 import { JournalScreen } from '../components/journal/JournalScreen';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
@@ -36,15 +37,6 @@ export const AppRouter = () => {
         });
     }, [ dispatch, setChecking, setisLoggedIn ]);
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
     if( checking ){
         return (
             <h1>Loading...</h1>
@@ -55,16 +47,13 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    <PublicRoute
-                        isLoggedIn={ isLoggedIn } 
-                        path="/auth" // login
-                        component={ LoginScreen }        
-                        />
+                    <PublicRoute isLoggedIn={isLoggedIn} path="/auth/register" component={RegisterScreen} />
+                    <PublicRoute isLoggedIn={isLoggedIn} path="/auth/" component={LoginScreen} />
                     <PrivateRoute 
                         exact
                         path="/"
-                        isLoggedIn={ isLoggedIn }
-                        component={ JournalScreen }
+                        isLoggedIn={isLoggedIn}
+                        component={JournalScreen}
                     />
                     <Redirect to="/auth/login"/>
                 </Switch>
