@@ -18,11 +18,28 @@
     width: 250px;
 }
 
+.auth__container{
+    min-width: 300px;
+    width: 30vw;
+    margin: 0 auto;
+    padding: 40px;
+    margin-top: 70px;
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 255, .2);
+    @media screen and (max-width: 450px){
+        width: 200px;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 150px;   
+    }
+}
+
+
+
 .auth__title {
     color: darken( $color: $primary, $amount: 20 );
     margin-bottom: 20px;
     text-align: center;
-    font-size: 25px;
+    font-size: 1.7rem;
 }
 
 .auth__input {
